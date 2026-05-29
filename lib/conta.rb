@@ -20,5 +20,8 @@ class Conta
     self.sacar valor
     destino.depositar valor
   end
+ def exibir_saldo
+  puts "Saldo: R$ #{@saldo}" 
+  end
 end
 

@@ -11,9 +11,9 @@ mariaConta.depositar 220
 
 joaoConta.sacar 300
 
-mariaConta.sacar 50
+# mariaConta.sacar 50
 
-joaoConta.transferir mariaConta, 400
+# joaoConta.transferir mariaConta, 400
 
 puts"#{joaoConta.titular} - Saldo R$ #{ '%.2f' % joaoConta.saldo}"
 puts"#{mariaConta.titular} - Saldo R$ #{ '%.2f' % mariaConta.saldo}"
