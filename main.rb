@@ -1,19 +1,30 @@
-require_relative "lib/conta"
-require_relative "lib/conta_corrente"
+require_relative "lib/util"
+require_relative "views/pessoa_view"
+require_relative "data/pessoa_data"
 
-joaoConta = ContaCorrente.new 1, "Joao Barbosa"
-mariaConta = Conta.new 2,"Maria Clara" 
+tela = Util.new
+pessoa_data = PessoaData.new
+pessoa_view = PessoaView.new(pessoa_data)
+loop = true
 
-joaoConta.depositar 1000
-joaoConta.depositar 500
+while loop
+  tela.gerar_titulo "Sistema Bancario"
+  print "Escolha: 1 - Pessoa | 2 - Conta"
+  escolha = gets.chomp.to_i
 
-mariaConta.depositar 220
+  case escolha
+    when 1
+      tela.gerar_titulo "SB - Pessoa"
+      pessoa_view.menu_pessoa
+    when 2 
+      tela.gerar_titulo "SB - Conta"
+      puts"Tela de Contas"
+    else
+      puts "Opçao invalida"   
+    end  
+    
+  print "Deseja continuar 1 - Sim | 2 - Nao"
+  continuar = gets.chomp
+  loop = false if continuar.upcase == "N"
+end
 
-joaoConta.sacar 300
-
-# mariaConta.sacar 50
-
-# joaoConta.transferir mariaConta, 400
-
-puts"#{joaoConta.titular} - Saldo R$ #{ '%.2f' % joaoConta.saldo}"
-puts"#{mariaConta.titular} - Saldo R$ #{ '%.2f' % mariaConta.saldo}"
