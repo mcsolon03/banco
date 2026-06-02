@@ -1,4 +1,4 @@
-class PessoaEndereco
+class Endereco
   
   attr_reader :cep, :logradouro, :bairro, :cidade, :uf
   

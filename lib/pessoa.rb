@@ -1,10 +1,11 @@
 class Pessoa
  
-  attr_reader :cpf_cnpj, :nome, :tipo
- 
-  def initialize cpf_cnpj, nome
+  attr_reader :cpf_cnpj, :nome, :tipo, :endereco
+
+  def initialize cpf_cnpj, nome, endereco
   @cpf_cnpj = cpf_cnpj
   @nome = nome 
+  @endereco = endereco
   @tipo = cpf_cnpj.size <= 11 ? "PF" : "PJ"
  end
 
@@ -12,7 +13,8 @@ class Pessoa
     { 
       cpf_cnpj: @cpf_cnpj,
       nome: @nome,
-      tipo: @tipo.to_h
+      tipo: @tipo,
+      endereco: @endereco.to_h
     }
   end
 end
