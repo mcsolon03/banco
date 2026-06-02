@@ -1,27 +1,13 @@
 class Conta
 
-  attr_reader :numero, :titular, :saldo
+  attr_reader :cpf_cnpj, :senha, :tipo
 
-  def initialize(numero, titular)
-  @numero = numero
-  @titular = titular
-  @saldo = 0
-  end
-
-  def depositar valor
-    @saldo += valor
-  end  
-   
-  def sacar valor
-    return @saldo -= valor  if valor <= @saldo
-      puts "Saldo insuficente"
-  end  
-  def transferir destino,valor
-    self.sacar valor
-    destino.depositar valor
-  end
- def exibir_saldo
-  puts "Saldo: R$ #{@saldo}" 
-  end
+  
+  def initialize cpf_cnpj, senha
+   @cpf_cnpj = cpf_cnpj
+   @senha = senha 
+   @tipo = cpf_cnpj.size <= 11 ? "PF" : "PJ"
+   end
 end
+
 

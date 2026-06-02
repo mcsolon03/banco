@@ -1,4 +1,5 @@
 require_relative "../lib/pessoa"
+require_relative "../lib/endereco"
 
 class PessoaView
   
@@ -12,20 +13,42 @@ class PessoaView
       print "Esolha: 1 - Listar | 2 - Cadastrar | 0 - Voltar"
       escolha = gets.chomp.to_i
      case escolha
-     when 1 
-      puts @data.listar
-     when 2
+     when 1
+       puts "  ID  |  CPF_CNPJ  |  NOME CLIENTE  |  TIPO  |  CIDADE/UF  "
+       @data.listar.each_with_index do |p, index|
+         p" #{index + 1} | #{p.cpf_cnpj} | #{p.nome} | #{p.tipo} | #{p.endereco['cidade']} | #{p.endereco['uf']}" 
+      end
+      when 2
       print "Informe o CPF/CNPJ: "  
       registro = gets.chomp
-      print" Informe o seu nome: "
+      
+      print "Informe o seu nome: "
       nome = gets.chomp
-      @data.add Pessoa.new registro, nome
+      
+      print "Informe o CEP: "
+      cep = gets.chomp
+      
+      print "Informe o logradouro: "
+      logradouro = gets.chomp
+      
+      print "Informe o bairro: "
+      bairro = gets.chomp
+
+      print "Informe a cidade: "
+      cidade = gets.chomp
+
+      print "Informe o UF: "
+      uf = gets.chomp
+
+      endereco = Endereco.new cep, logradouro, bairro, cidade, uf 
+      
+      @data.add Pessoa.new registro, nome, endereco
      when 0 
        break
      else 
        puts "Opçao Invalida"
      end
     
-    end
-  end
+     end
+   end
 end  
